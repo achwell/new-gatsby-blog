@@ -21,19 +21,17 @@ export default ({data}) => {
             <SEO title="Home"/>
             <div>
                 <h1> Dette er en overskríft</h1>
-                <h4>{data.allMarkdownRemark.totalCount}</h4>
+                <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
                 {
-                    data.allMarkdownRemark.edges.map(({node}) => {
-                        console.log({node})
-                        return (
+                    data.allMarkdownRemark.edges.map(({node}) =>
+                        (
                             <div key={node.id}>
                                 <BlogLink to={node.fields.slug}>
                                     <BlogTitle>{node.frontmatter.title} - {node.frontmatter.date}</BlogTitle>
                                 </BlogLink>
                                 <p>{node.excerpt}</p>
                             </div>
-                        );
-                    })
+                        ))
                 }
             </div>
         </Layout>
